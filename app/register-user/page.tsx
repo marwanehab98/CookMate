@@ -1,8 +1,17 @@
 'use client'
 import * as yup from "yup";
-import { Formik } from "formik"
+import { Formik, FormikHelpers } from "formik"
 import { useRouter } from "next/navigation"
+import Link from "next/link";
 
+/*
+Yup schema for user registry.
+It defines the name, email, password, and confirm password fields.
+name is a string and is required.
+email is a string with the email format and is required.
+password is a string with a minimum length of 8 and is required.
+confirmPassword is a string that must match the password field and is required. 
+*/
 const registerSchema = yup.object().shape({
     name: yup.string().required("required"),
     email: yup.string().email().required("required"),
@@ -12,6 +21,9 @@ const registerSchema = yup.object().shape({
         .required("required")
 })
 
+/*
+The initial form values which are all empty strings
+*/
 const initialRegisterValues = {
     name: "",
     email: "",
@@ -19,12 +31,21 @@ const initialRegisterValues = {
     confirmPassword: ""
 }
 
+/*
+The object type of the register form data
+*/
 type RegisterForm = yup.InferType<typeof registerSchema>
+
 
 export default function RegisterPage() {
     const router = useRouter()
 
-    const handleFormSubmit = async (values: RegisterForm, onSubmitProps: any) => {
+    /*
+    This function handles the form submission and registering a new user.
+    It takes the form data and makes an api call to the register-user api passing the data as the body of the request.
+    If the request is successful and a user is returned the form is reset and the user is redirected to the sign in screen.
+    */
+    const handleFormSubmit = async (values: RegisterForm, onSubmitProps: FormikHelpers<RegisterForm>) => {
         try {
             const response = await fetch('/api/register-user', {
                 method: 'POST', headers: {
@@ -142,6 +163,15 @@ export default function RegisterPage() {
                         <button
                             className="middle none center rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="submit">Register</button>
+                        <hr className="mb-6 border-t" />
+                        <div className="text-center">
+                            <Link
+                                className="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+                                href="api/auth/signin"
+                            >
+                                Already have an account? Login!
+                            </Link>
+                        </div>
                     </div>
                 </form>
             )}
