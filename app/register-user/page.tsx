@@ -92,6 +92,7 @@ export default function RegisterPage() {
                                     Name
                                 </label>
                                 <input
+                                    data-testid="name"
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="text"
                                     onBlur={handleBlur}
@@ -110,6 +111,7 @@ export default function RegisterPage() {
                                     Email
                                 </label>
                                 <input
+                                    data-testid="email"
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="email"
                                     onBlur={handleBlur}
@@ -129,6 +131,7 @@ export default function RegisterPage() {
                                     Password
                                 </label>
                                 <input
+                                    data-testid="password"
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="password"
                                     onBlur={handleBlur}
@@ -148,6 +151,7 @@ export default function RegisterPage() {
                                     Confirm Password
                                 </label>
                                 <input
+                                    data-testid="confirmPassword"
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="password"
                                     onBlur={handleBlur}

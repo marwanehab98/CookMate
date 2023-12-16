@@ -12,7 +12,7 @@ interface CardProps {
 
 const RecipeCard: FC<CardProps> = ({ id, title, ingredients }: CardProps) => {
     return (
-        <div className="relative flex justify-between w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+        <div data-testid="recipe-card" className="relative flex justify-between w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
             <div className="p-6">
                 <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     {title}
