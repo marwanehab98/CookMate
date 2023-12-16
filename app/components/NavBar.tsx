@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import SignOut from "./SignOut";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
+import SearchBar from "./SearchBar";
 
 export default async function NavBar() {
     const session = await getServerSession(authOptions)
@@ -13,6 +14,7 @@ export default async function NavBar() {
                 >CookMate</span
                 >
             </Link>
+            <SearchBar />
             <div
                 className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
                 id="navigation"
@@ -26,13 +28,6 @@ export default async function NavBar() {
                     >
                         <span>Create Recipe</span>
                     </Link>}
-
-                    <Link
-                        href="/"
-                        className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-                    >
-                        <span>Search</span>
-                    </Link>
 
                     {!session?.user && <Link
                         href={'/register-user'}
