@@ -1,6 +1,10 @@
 import RecipeCard from "@/app/components/RecipeCard"
 import prisma from "@/lib/prisma"
 
+/*
+Finds and returns all published recipes in the database where 
+the title, ingredients, or instructions contain the search query.
+*/
 async function getRecipes(query: string) {
     return await prisma.recipe.findMany({
         where: {

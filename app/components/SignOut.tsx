@@ -2,6 +2,9 @@
 
 import { signOut } from 'next-auth/react'
 
+/*
+Sign out button component that uses the NextAuth signOut function
+*/
 export default function SignOut() {
 
     const SignOutHandler = async (event: React.MouseEvent<HTMLElement>) => {

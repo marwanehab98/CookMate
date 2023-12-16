@@ -1,6 +1,9 @@
 import Link from "next/link"
 import { FC } from "react"
 
+/*
+Interface defining the shape of the props object for the RecipeCard component
+*/
 interface CardProps {
     id: string,
     title: string,
@@ -14,9 +17,11 @@ const RecipeCard: FC<CardProps> = ({ id, title, ingredients }: CardProps) => {
                 <h5 className="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
                     {title}
                 </h5>
-                <p className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
-                    {`${ingredients}`.replaceAll(',', ', ')}
-                </p>
+                <ul>
+                    {ingredients.map((ingredient) => {
+                        return <li key={ingredient} className="block font-sans text-base font-light leading-relaxed text-inherit antialiased">{ingredient}</li>
+                    })}
+                </ul>
             </div>
             <div className="p-6 pt-0">
                 <Link

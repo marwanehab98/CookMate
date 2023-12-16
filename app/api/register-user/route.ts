@@ -2,7 +2,13 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma"
 import bcrypt from "bcrypt"
 
-
+/*
+The api route of the register-user POST request.
+It takes the name, email, password, and confirmPassword fields of the user in the request's body.
+If the password does not match confirmPassword it return null.
+If the user already exists it returns null.
+Otherwise it hashes the password and creates a new user entry in the database and returns the user without the password in the response.
+*/
 export async function POST(request: Request) {
     try {
         const body = await request.json()

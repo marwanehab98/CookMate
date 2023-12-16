@@ -1,5 +1,8 @@
 import prisma from "@/lib/prisma"
 
+/*
+This function finds a specific recipe in the database using it's id
+*/
 async function getRecipe(id: string) {
     return await prisma.recipe.findUnique({
         where: {

@@ -1,8 +1,9 @@
 import prisma from "@/lib/prisma"
 import RecipeCard from "./components/RecipeCard"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
 
+/*
+Finds and returns all published recipes in the database.
+*/
 async function getRecipes() {
   return await prisma.recipe.findMany({
     where: {
@@ -18,10 +19,9 @@ async function getRecipes() {
 
 export default async function Home() {
   const recipes = await getRecipes()
-  const session = await getServerSession(authOptions)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center justify-between p-12">
       <div className="flex items-start justify-center lg:h-screen">
         <div className="container mx-auto mx-auto p-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-24">

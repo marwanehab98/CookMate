@@ -4,6 +4,10 @@ import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 
+
+/*
+Navigation Bar component
+*/
 export default async function NavBar() {
     const session = await getServerSession(authOptions)
 
